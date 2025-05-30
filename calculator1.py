@@ -1,30 +1,31 @@
 import numpy as np
 from scipy.stats import mode
 
-
 l = []
-print("Your current dataset:",l)
+print("Your current list:",l)
 
 def list():
-    choice = input("\nWhat do you want to do with your data set? (START WITH APPEND) \n1. Insert\n2. Append\n3. Remove\n4. View\nResponse: \n")
+    choice = input("\nWhat do you want to do with your data set?\n1. Insert\n2. Append\n3. Remove\n4. View\nResponse: \n")
 
     if choice == "1" or choice.lower() == "insert":
         for value, num in enumerate(l, start = 1):
-            print("{}. {}".format(value, num))
+            print("Data value {}. {}".format(value, num))
         new_element = float(input("\nInsert a new data value: "))
         position = int(input("\nWhat position do you want your data value to be in?: "))
-        if position >= 1 and position <= len(l):
+        if len(l) > 0:
+          if position >= 1 and position <= len(l):
             l.insert(position - 1, new_element)
-            print("\nNew list:")
-            for value, num in enumerate(l, start = 1):
-                print("{}. {}".format(value, num))
-        else:
-          print("\nYou're putting your data value out of bounds. Try again.")
+            print("\nData value inserted.")
+          else:
+            print("\nYou're putting your data value out of bounds. Try again.")
+        elif len(l) == 0:
+           l.insert(position - 1, new_element)
+           print("\nData value inserted.")
 
     elif choice == "2" or choice.lower() == "append":
       def append():    
           try:
-            new_element = float(input("Add a new data value: "))
+            new_element = float(input("Insert a new data value: "))
             l.append(new_element)
             print("\nThis is your new data set:\n",l)
           except ValueError:
@@ -72,16 +73,16 @@ while restart_1():
 
 def stats():
   stat = input("\nDo you want to calculate the mode, the median, the mean, or the standard deviation of your dataset?\n1. Mode\n2. Median\n3. Mean\n4. Standard Deviation\nResponse: ")
-
+  
   if stat == "1" or stat.lower() == "mode":
     mode_result = mode(l, keepdims = True)
     print("\nThe mode of your dataset is:",mode_result.mode[0])
     print("\nIt occurs",mode_result.count[0],"times.")
-
+  
   elif stat == "2" or stat.lower() == "median":
     median = np.median(l)
     print("\nThe median of your dataset is:",median)
-
+  
   elif stat == "3" or stat.lower() == "mean":
     mean = np.mean(l)
     print("\nThe mean of your dataset is:",mean)
