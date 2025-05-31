@@ -75,9 +75,9 @@ def stats():
   stat = input("\nDo you want to calculate the mode, the median, the mean, or the standard deviation of your dataset?\n1. Mode\n2. Median\n3. Mean\n4. Standard Deviation\nResponse: ")
   
   if stat == "1" or stat.lower() == "mode":
-    mode_result = mode(l, keepdims = True)
-    print("\nThe mode of your dataset is:",mode_result.mode[0])
-    print("\nIt occurs",mode_result.count[0],"times.")
+    mode_result = mode(l, keepdims = True) #mode_result is a tuple ModeResult(mode=array([2]), count=array([2]))
+    print("\nThe mode of your dataset is:",mode_result.mode[0]) #mode_result.mode[0] accesses the mode value. Because .mode is an array, [0] is used to get the scalar, 2.
+    print("\nIt occurs",mode_result.count[0],"times.") #Counts number of times the mode appears.
   
   elif stat == "2" or stat.lower() == "median":
     median = np.median(l)
