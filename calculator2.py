@@ -30,7 +30,7 @@ def choice():
             if choice == "1":
                 function = sympify(input("Function to take the integral of: "))
                 indef_integral = integrate(function, x)
-                print(f"The integral of {function} is", indef_integral)
+                print(f"The integral of {function} is", indef_integral, "+ c")
             elif choice == "2":
                 function = sympify(input("Function to take the integral of: "))
                 a = float(input("Lower bound: "))
