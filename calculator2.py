@@ -14,14 +14,14 @@ def choice():
             right = sympify(input("Right side of equation (eg 2, x**0.5): "))
             equation = Eq(left, right)
             solution = solve(equation)
-            print("The solutions/s to the equation is/are ",solution)
+            print("The solutions/s to the equation is/are ", solution)
         algebra()
 
     elif choice == "2" or choice.lower() == "derivative":
         def derivative():
             function = sympify(input("Function to take the derivative of: "))
             deriv = diff(function, x)
-            print(f"The derivative of {function} ",deriv)
+            print(f"The derivative of {function} is", deriv)
         derivative()
 
     elif choice == "3" or choice.lower() == "integral":
@@ -30,7 +30,7 @@ def choice():
             if choice == "1":
                 function = sympify(input("Function to take the integral of: "))
                 indef_integral = integrate(function, x)
-                print(f"The integral of {function}",indef_integral)
+                print(f"The integral of {function} is", indef_integral)
             elif choice == "2":
                 function = sympify(input("Function to take the integral of: "))
                 a = float(input("Lower bound: "))
