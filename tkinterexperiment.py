@@ -1,5 +1,4 @@
 import tkinter as tk
-from calculator2 import derivative
 
 window = tk.Tk()
 window.geometry("700x400")
@@ -11,7 +10,6 @@ widget.pack(padx = 35, pady = 20)
 
 def click():
     widget.config(text = "Okay!\n")
-    derivative()
 
 
 button = tk.Button(window,
