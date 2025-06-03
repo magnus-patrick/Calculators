@@ -82,9 +82,9 @@ def choice():
                 
                 return [dx, dy, dz]
             
-            sigma = 10.0 
+            sigma = 15.0 
             beta = 8.0 / 3.0
-            rho = 28.0
+            rho = 12.0
 
             p = (sigma, beta, rho) #parameters
 
