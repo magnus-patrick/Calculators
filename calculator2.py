@@ -1,12 +1,13 @@
 from sympy import sympify, Eq, solve, diff, integrate, symbols, limit, Sum
-from scipy.integrate import quad
+from scipy.integrate import quad, odeint
+from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
 
 x = symbols("x")
 
 def choice():
-    choice = input("\nWhat do you want to do?\n1. Algebra\n2. Derivative\n3. Integral\n4. Graph\n5. Limit\n6. Sum\nResponse: ")
+    choice = input("\nWhat do you want to do?\n1. Algebra\n2. Derivative\n3. Integral\n4. Graph\n5. Limit\n6. Sum\n7. ODE\nResponse: ")
     
     if choice == "1" or choice.lower() == "algebra":
         def algebra():
@@ -66,9 +67,42 @@ def choice():
             start = sympify(input("Number to start at (typically 0 or 1): "))
             end = sympify(input("Number to end at (can be oo as well!): "))
             the_sum = Sum(a_n, (x, start, end)).doit() #.n() approximates while .doit() gives exact answer
-            print(f"{a_n}, starting at {start}, ending at oo, gives {the_sum}")
+            print(f"{a_n}, starting at {start}, ending at {end}, gives {the_sum}")
         summation()
+        
+    elif choice == "7" or choice.lower() == "ode":
+        def ordinary():
+            
+            def lorenz(t, state, sigma, beta, rho):
+                x, y, z = state
 
+                dx = sigma * (y - x) #Differential equations
+                dy = x * (rho - z) - y
+                dz = x * y - beta * z
+                
+                return [dx, dy, dz]
+            
+            sigma = 10.0 
+            beta = 8.0 / 3.0
+            rho = 28.0
+
+            p = (sigma, beta, rho) #parameters
+
+            y0 = [1.1, 1, 1] #Initial conditions
+
+            t = np.arange(0.0, 30.0, 0.01)
+
+            ode_sol = odeint(lorenz, y0, t, p, tfirst = True)
+
+            fig = plt.figure()
+            ax = fig.add_subplot(1, 2, 1, projection = "3d")
+            ax.plot(ode_sol[:,0],
+                    ode_sol[:,1],
+                    ode_sol[:,2])
+            ax.set_title("The Lorenz System")
+            plt.show()
+
+        ordinary()
 def restart():
     restart = input("Want to do another operation? (y or n): ")
     if restart.lower() == "y" or restart.lower() == "yes":
