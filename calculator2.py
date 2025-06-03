@@ -15,14 +15,14 @@ def choice():
             right = sympify(input("Right side of equation (eg 2, x**0.5): "))
             equation = Eq(left, right)
             solution = solve(equation)
-            print("The solutions/s to the equation is/are ", solution)
+            print(f"The solutions/s to the equation is/are {solution}")
         algebra()
 
     elif choice == "2" or choice.lower() == "derivative":
         def derivative():
             function = sympify(input("Function to take the derivative of: "))
             deriv = diff(function, x)
-            print(f"The derivative of {function} is", deriv)
+            print(f"The derivative of {function} is {deriv}")
         derivative()
 
     elif choice == "3" or choice.lower() == "integral":
@@ -31,7 +31,7 @@ def choice():
             if choice == "1":
                 function = sympify(input("Function to take the integral of: "))
                 indef_integral = integrate(function, x)
-                print(f"The integral of {function} is", indef_integral, "+ c")
+                print(f"The integral of {function} is {indef_integral} + c")
             elif choice == "2":
                 function = sympify(input("Function to take the integral of: "))
                 a = float(input("Lower bound: "))
@@ -63,7 +63,7 @@ def choice():
     
     elif choice == "6" or choice.lower() == "sum":
         def summation():
-            a_x = sympify(input("Function a_n: "))
+            a_x = sympify(input("Function a_x: "))
             start = sympify(input("Number to start at (typically 0 or 1): "))
             end = sympify(input("Number to end at (can be oo as well!): "))
             the_sum = Sum(a_x, (x, start, end)).doit() #.n() approximates while .doit() gives exact answer
