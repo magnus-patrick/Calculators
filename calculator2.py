@@ -43,7 +43,7 @@ def choice():
     elif choice == "4" or choice.lower() == "graph":
         def graph():
             x = np.linspace(-20, 20, 1000)
-            y = 5 * np.cos(x) + 9
+            y = 5 * np.cos(x) + 9 #Can be any function. This is just an example. For some reason, I cannot figure out how to implement an input()
             plt.plot(x, y)
             plt.xlabel('x')
             plt.ylabel('y')
