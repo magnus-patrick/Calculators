@@ -64,7 +64,7 @@ def choice():
         def summation():
             a_n = sympify(input("Function a_n: "))
             start = sympify(input("Number to start at (typically 0 or 1): "))
-            end = sympify(input("Number to end at (can be oo as well!): ")
+            end = sympify(input("Number to end at (can be oo as well!): "))
             the_sum = Sum(a_n, (x, start, end)).doit() #.n() approximates while .doit() gives exact answer
             print(f"{a_n}, starting at {start}, ending at oo, gives {the_sum}")
         summation()
