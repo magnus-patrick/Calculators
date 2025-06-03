@@ -63,11 +63,11 @@ def choice():
     
     elif choice == "6" or choice.lower() == "sum":
         def summation():
-            a_n = sympify(input("Function a_n: "))
+            a_x = sympify(input("Function a_n: "))
             start = sympify(input("Number to start at (typically 0 or 1): "))
             end = sympify(input("Number to end at (can be oo as well!): "))
-            the_sum = Sum(a_n, (x, start, end)).doit() #.n() approximates while .doit() gives exact answer
-            print(f"{a_n}, starting at {start}, ending at {end}, gives {the_sum}")
+            the_sum = Sum(a_x, (x, start, end)).doit() #.n() approximates while .doit() gives exact answer
+            print(f"{a_x}, starting at {start}, ending at {end}, gives {the_sum}")
         summation()
         
     elif choice == "7" or choice.lower() == "ode":
