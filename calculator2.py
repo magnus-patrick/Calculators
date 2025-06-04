@@ -1,6 +1,5 @@
 from sympy import sympify, Eq, solve, diff, integrate, symbols, limit, Sum
 from scipy.integrate import quad, odeint
-from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
 
