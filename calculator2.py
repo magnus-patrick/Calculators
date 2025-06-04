@@ -83,9 +83,9 @@ def choice():
             y = sympify(input("y: "))
             z = sympify(input("z: "))
 
-            sigma = sympify(input("Sigma: "))
-            beta = sympify(input("Beta: "))
-            rho = sympify(input("Rho: "))
+            sigma = 10
+            beta = 8 / 3
+            rho = 28
             p = (sigma, beta, rho) #parameters
 
             y0 = [x, y, z] #Initial conditions
