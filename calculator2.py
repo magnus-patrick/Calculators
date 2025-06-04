@@ -30,7 +30,7 @@ def choice():
             if choice == "1":
                 function = sympify(input("Function to take the integral of: "))
                 indef_integral = integrate(function, x)
-                print(f"The integral of {function} is {indef_integral} + c")
+                print(f"The integral of {function} is", indef_integral, "+ c")
             elif choice == "2":
                 function = sympify(input("Function to take the integral of: "))
                 a = float(input("Lower bound: "))
@@ -43,7 +43,7 @@ def choice():
     elif choice == "4" or choice.lower() == "graph":
         def graph():
             x = np.linspace(-20, 20, 1000)
-            y = 5 * np.cos(x) + 9 #Can be any function. This is just an example. For some reason, I cannot figure out how to implement an input()
+            y = x
             plt.plot(x, y)
             plt.xlabel('x')
             plt.ylabel('y')
@@ -64,29 +64,31 @@ def choice():
         def summation():
             a_x = sympify(input("Function a_x: "))
             start = sympify(input("Number to start at (typically 0 or 1): "))
-            end = sympify(input("Number to end at (can be oo as well!): "))
+            end = sympify(input("Number to stop at (can be oo as well!): "))
             the_sum = Sum(a_x, (x, start, end)).doit() #.n() approximates while .doit() gives exact answer
             print(f"{a_x}, starting at {start}, ending at {end}, gives {the_sum}")
         summation()
-        
+    
     elif choice == "7" or choice.lower() == "ode":
         def ordinary():
             
             def lorenz(t, state, sigma, beta, rho):
                 x, y, z = state
-
                 dx = sigma * (y - x) #Differential equations
                 dy = x * (rho - z) - y
                 dz = x * y - beta * z
-                
                 return [dx, dy, dz]
             
-            sigma = 15.0 
-            beta = 8.0 / 3.0
-            rho = 12.0
+            x = sympify(input("x: "))
+            y = sympify(input("y: "))
+            z = sympify(input("z: "))
+
+            sigma = sympify(input("Sigma: "))
+            beta = sympify(input("Beta: "))
+            rho = sympify(input("Rho: "))
             p = (sigma, beta, rho) #parameters
 
-            y0 = [1.1, 1, 1] #Initial conditions
+            y0 = [x, y, z] #Initial conditions
             t = np.arange(0.0, 30.0, 0.01)
 
             ode_sol = odeint(lorenz, y0, t, p, tfirst = True)
@@ -100,6 +102,7 @@ def choice():
             plt.show()
 
         ordinary()
+
 def restart():
     restart = input("Want to do another operation? (y or n): ")
     if restart.lower() == "y" or restart.lower() == "yes":
