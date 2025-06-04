@@ -82,6 +82,7 @@ def choice():
             x = sympify(input("x: "))
             y = sympify(input("y: "))
             z = sympify(input("z: "))
+            y0 = [x, y, z] #Initial conditions
 
             #Lorenz used these values for the parameters.
             sigma = 10
@@ -89,7 +90,6 @@ def choice():
             rho = 28
             p = (sigma, beta, rho) #parameters
 
-            y0 = [x, y, z] #Initial conditions
             t = np.arange(0.0, 30.0, 0.01)
 
             ode_sol = odeint(lorenz, y0, t, p, tfirst = True)
