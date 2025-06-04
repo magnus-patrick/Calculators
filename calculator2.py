@@ -83,6 +83,7 @@ def choice():
             y = sympify(input("y: "))
             z = sympify(input("z: "))
 
+            #Lorenz used these values for the parameters.
             sigma = 10
             beta = 8 / 3
             rho = 28
