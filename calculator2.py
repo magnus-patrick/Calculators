@@ -84,11 +84,9 @@ def choice():
             sigma = 15.0 
             beta = 8.0 / 3.0
             rho = 12.0
-
             p = (sigma, beta, rho) #parameters
 
             y0 = [1.1, 1, 1] #Initial conditions
-
             t = np.arange(0.0, 30.0, 0.01)
 
             ode_sol = odeint(lorenz, y0, t, p, tfirst = True)
