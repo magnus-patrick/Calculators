@@ -2,7 +2,7 @@
 
 📊 Calculator 1 can do statistics operations with a dataset. It can calculate the mean, standard deviation, the median, and the mode!
 
-♾️Calculator 2 can do calculus operations, namely summation, derivatives, integrals (definite & indefinite), and limits. It can also do algebra and graph functions!
+♾️Calculator 2 can do calculus operations, namely summation, derivatives, integrals (definite & indefinite), limits, and show differential equations. It can also do algebra and graph functions!
 
 1. SciPy 🔬
 - "SciPy provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other classes of problems."
