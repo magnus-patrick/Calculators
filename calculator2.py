@@ -99,7 +99,7 @@ def choice():
             ax.plot(ode_sol[:,0],
                     ode_sol[:,1],
                     ode_sol[:,2])
-            ax.set_title("The Lorenz System")
+            ax.set_title(f"dx/dt = σ(y - x)\ndy/dt = x(ρ - z) - y\ndz/dt = xy - βz\nx =  {x}\ny =  {y}\nz =  {z}")
             plt.show()
 
         ordinary()
