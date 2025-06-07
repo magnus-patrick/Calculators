@@ -1,6 +1,7 @@
 from sympy import sympify, Eq, solve, diff, integrate, symbols, limit, Sum
 from scipy.integrate import quad, odeint
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 import numpy as np
 
 x = symbols("x")
@@ -84,7 +85,7 @@ def choice():
             z = sympify(input("z: "))
             y0 = [x, y, z] #Initial conditions
 
-            #Lorenz used these values for the parameters.
+            #Ed Lorenz used these values for the parameters.
             sigma = 10
             beta = 8 / 3
             rho = 28
@@ -92,14 +93,30 @@ def choice():
 
             t = np.arange(0.0, 30.0, 0.01)
 
-            ode_sol = odeint(lorenz, y0, t, p, tfirst = True)
+            ode_sol = odeint(lorenz, y0, t, p, tfirst = True) #odeint() returns values for x, y, and z over t. 
+            #[ [x, y, z] [ode_sol[:1, 0] ode_sol[:1, 1] ode_sol[:1, 2]] ... [ode_sol[1:2, 0] ode_sol[1:2, 1] ode_sol[1:2, 2]] ]
 
             fig = plt.figure()
-            ax = fig.add_subplot(1, 2, 1, projection = "3d")
-            ax.plot(ode_sol[:,0],
-                    ode_sol[:,1],
-                    ode_sol[:,2])
+            ax = fig.add_subplot(1, 2, 1, projection = "3d") #1x2 grid at position 1. 3D projection
+            ax.plot(ode_sol[:, 0], #Each of the x-values
+                    ode_sol[:, 1], #Each of the y-values
+                    ode_sol[:, 2], color = 'white') #Each of the z-values
             ax.set_title(f"dx/dt = σ(y - x)\ndy/dt = x(ρ - z) - y\ndz/dt = xy - βz\nx =  {x}\ny =  {y}\nz =  {z}")
+
+            line_color = input("Color of line: ")
+            line, = ax.plot([], [], [], lw = 0.7, color = f'{line_color}')
+
+            def initial(): #Starts with no line
+                line.set_data([], [])
+                line.set_3d_properties([])
+                return line,
+
+            def update(frame): #Updates the line for each of the 30 frames
+                line.set_data(ode_sol[:frame, 0], ode_sol[:frame, 1])
+                line.set_3d_properties(ode_sol[:frame, 2])
+                return line,
+
+            animation = FuncAnimation(fig, update, frames = len(t), init_func = initial, interval = 1, blit = True) 
             plt.show()
 
         ordinary()
