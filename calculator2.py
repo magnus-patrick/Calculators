@@ -103,7 +103,7 @@ def choice():
                     ode_sol[:, 2], color = 'white') #Each of the z-values
             ax.set_title(f"dx/dt = σ(y - x)\ndy/dt = x(ρ - z) - y\ndz/dt = xy - βz\nx =  {x}\ny =  {y}\nz =  {z}")
 
-            line_color = input("Color of line: ")
+            line_color = input("Color of line: ").lower()
             line, = ax.plot([], [], [], lw = 0.7, color = f'{line_color}')
 
             def initial(): #Starts with no line
