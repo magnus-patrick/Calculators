@@ -48,7 +48,7 @@ def choice():
             plt.plot(x, y)
             plt.xlabel('x')
             plt.ylabel('y')
-            plt.title('Wave Function')
+            plt.title('Function')
             plt.grid(True)
             plt.show()
         graph()
