@@ -4,7 +4,7 @@
 
 ♾️Calculator 2 can do calculus operations, namely summation, derivatives, integrals (definite & indefinite), limits, and show differential equations. It can also do algebra and graph functions!
 
-- LIBRARIES
+The Libraries Used:
 
 1. SciPy 🔬
 - "SciPy provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other classes of problems."
