@@ -1,6 +1,6 @@
 # The Calculators
 
-📊 Calculator 1 can do statistics operations with a dataset. It can calculate the mean, standard deviation, the median, and the mode!
+📊 Calculator 1 can do statistics operations with a dataset. It can calculate the mean, standard deviation, the median, and the mode! It also contains a dot plot.
 
 ♾️Calculator 2 can do calculus operations, namely summation, derivatives, integrals (definite & indefinite), limits, and show differential equations. It can also do algebra and graph functions!
 
