@@ -3,7 +3,7 @@ from scipy.stats import mode
 import matplotlib.pyplot as plt
 
 l = []
-print("Your dataset: ",l)
+print("Your data set: ",l)
 
 def list():
     choice = input("\nWhat do you want to do with your data set?\n1. Insert\n2. Append\n3. Remove\n4. View\nResponse: \n")
