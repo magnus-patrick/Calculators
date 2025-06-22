@@ -1,8 +1,9 @@
 import numpy as np
 from scipy.stats import mode
+import matplotlib.pyplot as plt
 
 l = []
-print("Your current list:",l)
+print("Your dataset: ",l)
 
 def list():
     choice = input("\nWhat do you want to do with your data set?\n1. Insert\n2. Append\n3. Remove\n4. View\nResponse: \n")
@@ -32,12 +33,9 @@ def list():
             print("\nPlease type a number, Thanks!")
 
       def keep_append():
-         cont = input("\nDo you want to keep adding data values? (y/n) Response: ")
-         if cont.lower() == "y" or cont.lower() == "yes":
-            return True
-         else:
-            return False
-
+         contapp = input("\nDo you want to keep adding data values? (y/n) Response: ")
+         return contapp.lower() == "y"
+            
       append()
 
       while keep_append():
@@ -57,14 +55,11 @@ def list():
         if not l:
             print("\nYou got no data values in your data set!")
         else:
-            print("\nList: ",l)
+            print("\nData set:",l)
 
 def restart_1():
     restart_1 = input("\nDo you want to go back to the menu or do statistics with your data set? (Type 1 to go back or 2 to do statistics): ")
-    if restart_1.lower() == "1":
-        return True
-    else:
-        return False
+    return restart_1.lower() == "1"
 
 list()
 
@@ -72,12 +67,12 @@ while restart_1():
     list()
 
 def stats():
-  stat = input("\nDo you want to calculate the mode, the median, the mean, or the standard deviation of your dataset?\n1. Mode\n2. Median\n3. Mean\n4. Standard Deviation\nResponse: ")
+  stat = input("\nDo you want to calculate the mode, the median, the mean, or the standard deviation of your dataset?\n1. Mode\n2. Median\n3. Mean\n4. Standard Deviation\n5. Figure\nResponse: ")
   
   if stat == "1" or stat.lower() == "mode":
     mode_result = mode(l, keepdims = True) #mode_result is a tuple ModeResult(mode=array([2]), count=array([2]))
-    print("\nThe mode of your dataset is:",mode_result.mode[0]) #mode_result.mode[0] accesses the mode value. Because .mode is an array, [0] is used to get the scalar, 2.
-    print("\nIt occurs",mode_result.count[0],"times.") #Counts number of times the mode appears.
+    print("\nThe mode of your dataset is:",mode_result.mode[0],f",occurring {mode_result.count[0]} times.") #mode_result.mode[0] accesses the mode value. Because .mode is an array, [0] is used to get the scalar, 2.
+    #mode_result.count[0] counts number of times the mode appears.
   
   elif stat == "2" or stat.lower() == "median":
     median = np.median(l)
@@ -88,15 +83,28 @@ def stats():
     print("\nThe mean of your dataset is:",mean)
 
   elif stat == "4" or stat.lower() == "standard deviation":
-     std = np.std(l)
-     print("\nThe standard deviation of your dataset is:",std)
+     std = round(np.std(l), 2)
+     print("\nThe standard deviation of your dataset is approximately :",std)
+    
+  elif stat == "5" or stat.lower() == "figure":
+     plt.figure(figsize = (10, 3.5))
+     plt.plot(l, 'o', label = f"Standard Deviation: {round(np.std(l), 2)}\nMedian: {np.median(l)}\nMean: {np.mean(l)}")
+     plt.xlabel('Value')
+     plt.ylabel('Frequency')
+     plt.title('Dot Plot of Your Dataset')
+     plt.grid()
+     plt.legend()
+     plt.show()
 
 def restart_2():
-    restart_2 = input("\nDo you want to do more statistics with your list? (Type 1 to do more statistics or 2 to exit): ")
-    if restart_2.lower() == "1":
-      return True
+    restart2 = input("\nDo you want to do more statistics with your list? (Type 1 to do more statistics, 2 to modify dataset, or 3 to exit): ")
+    if restart2.lower() == '1':
+      stats()
+    elif restart2.lower() == '2':
+       list()
+       restart_1()
     else:
-      return False
+       return False
 
 stats()
 
