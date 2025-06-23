@@ -171,10 +171,7 @@ def choice():
 
 def restart():
     restart = input("Want to do another operation? (y or n): ")
-    if restart.lower() == "y" or restart.lower() == "yes":
-        return True
-    else:
-        return False
+    return restart.lower() == "y" or restart.lower() == "yes"
 
 choice()
 
