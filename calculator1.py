@@ -2,7 +2,7 @@ import numpy as np
 from scipy.stats import mode
 import matplotlib.pyplot as plt
 
-l = []
+l = [1,2,2,3,3,3,4,4,5]
 print("Your data set: ",l)
 
 def list():
@@ -87,13 +87,15 @@ def stats():
      print("\nThe standard deviation of your dataset is approximately :",std)
     
   elif stat == "5" or stat.lower() == "figure":
+     textstr = '\n'.join((rf'$\sigma$: {np.std(l):.2f}', 
+                          rf'$M$: {np.median(l)}',
+                          rf'$\mu$: {np.mean(l):.2f}'))
      plt.figure(figsize = (10, 3.5))
-     plt.plot(l, 'o', label = f"Standard Deviation: {round(np.std(l), 2)}\nMedian: {np.median(l)}\nMean: {np.mean(l)}")
+     plt.hist(l, bins = 5)
      plt.xlabel('Value')
      plt.ylabel('Frequency')
-     plt.title('Dot Plot of Your Dataset')
-     plt.grid()
-     plt.legend()
+     plt.title('Histogram')
+     plt.text(1, 2.5, textstr, bbox = dict(facecolor = 'white', edgecolor = 'black'))
      plt.show()
 
 def restart_2():
