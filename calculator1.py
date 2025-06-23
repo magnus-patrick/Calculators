@@ -87,15 +87,17 @@ def stats():
      print("\nThe standard deviation of your dataset is approximately :",std)
     
   elif stat == "5" or stat.lower() == "figure":
+     md = mode(l, keepdims = True)
      textstr = '\n'.join((rf'$\sigma$: {np.std(l):.2f}', 
                           rf'$M$: {np.median(l)}',
-                          rf'$\mu$: {np.mean(l):.2f}'))
+                          rf'$\mu$: {np.mean(l):.2f}',
+                          rf'$M_0$: {md.mode[0]}'))
      plt.figure(figsize = (10, 3.5))
      plt.hist(l, bins = 5)
      plt.xlabel('Value')
      plt.ylabel('Frequency')
      plt.title('Histogram')
-     plt.text(1, 2.5, textstr, bbox = dict(facecolor = 'white', edgecolor = 'black'))
+     plt.text(0.85, 2.3, textstr, bbox = dict(facecolor = 'white', edgecolor = 'black'))
      plt.show()
 
 def restart_2():
